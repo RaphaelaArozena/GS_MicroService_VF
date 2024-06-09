@@ -1,0 +1,29 @@
+.ocean {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filters {
+    margin-left: 15%;
+    width: 75%;
+    height: 120px;
+    display: flex;
+    flex-flow: wrap;
+    .field {
+        margin-left: 15px;
+        margin-top: 5px;
+    }
+
+    .container {
+        width: 100%;
+    }
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 700px;
+}

@@ -1,0 +1,64 @@
+<div class="filters">
+  <div class="field">
+  <p-dropdown 
+    [options]="regioesFiltro" 
+    [(ngModel)]="regiao" 
+    placeholder="Selecione a regiao" />
+  </div>
+  <div class="field">
+    <p-dropdown 
+    [options]="especiesFiltro" 
+    [(ngModel)]="especie" 
+    placeholder="Selecione a especie" />
+  </div>
+  <div class="field">
+    <p-dropdown 
+    [options]="statusConservacaoFiltro" 
+    [(ngModel)]="statusConservacao" 
+    placeholder="Selecione a conservacao" />
+  </div>
+  <div class="field">
+    <input placeholder="Temperatura min" type="text" pInputText [(ngModel)]="temperaturaMin" />
+  </div>
+  <div class="field">
+    <input placeholder="Temperatura max" type="text" pInputText [(ngModel)]="temperaturaMax" />
+  </div>
+  <div class="field">
+    <input placeholder="Ph min" type="text" pInputText [(ngModel)]="phMin" />
+  </div>
+  <div class="field">
+    <input placeholder="Ph Max" type="text" pInputText [(ngModel)]="phMax" />
+  </div>
+  <div class="field">
+    <p-dropdown 
+    [options]="nivelPoluicaoFiltro" 
+    [(ngModel)]="nivelPoluicao" 
+    placeholder="Selecione o nivel de poluicao" />
+  </div>
+  <div class="field">
+    <p-button (onClick)="getData()" label="Buscar" />
+  </div>
+</div>
+<div  *ngIf="!loading" class="ocean">
+  <p-table [value]="oceanData" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Regiao</th>
+            <th>Temperatura Agua</th>
+            <th>Ph</th>
+            <th>Nivel poluicao</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-ocean>
+        <tr>
+            <td>{{ ocean.regiao }}</td>
+            <td>{{ ocean.temperaturaAgua }}</td>
+            <td>{{ ocean.pH }}</td>
+            <td>{{ ocean.nivelPoluicao }}</td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>
+<div *ngIf="loading" class="loading">
+  <p-progressSpinner ariaLabel="loading" />
+</div>
